@@ -3,6 +3,9 @@ import { user } from "./user";
 
 @Entity()
 export class views{
+    static id(id: any) {
+        throw new Error('Method not implemented.');
+    }
     @PrimaryGeneratedColumn()
     id!: number;
     @Column()

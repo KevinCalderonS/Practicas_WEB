@@ -5,12 +5,12 @@ import { views } from './models/views';
 
 async function main() {
     await initDatabase()
-    const newUser = await insertarUser("walter"," walterG@gmail.com")
-    console.log("Usuario Creado",newUser.id)
+    const newUser = await insertarUser("walter"," walterG@gmail.com");
+    console.log("Usuario Creado",newUser.id);
     const user = await insertarVista ("vista1",newUser.id);
     console.log("Vista De Reporte Productos:",newUser.id);
     const newUser2 = await obtenerUsers();
-    const deleteView = await deleteVista(views.id);
+    const deleteView = await deleteVista(newUser.id);
     console.log("Vista Eliminada",deleteView);
     console.log("consulta de Usuarios",newUser2);
     const newUser3 = await obtenerUser(newUser.id);
