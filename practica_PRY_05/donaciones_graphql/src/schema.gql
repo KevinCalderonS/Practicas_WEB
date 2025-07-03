@@ -1,0 +1,102 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Verificacion {
+  id: Int!
+  donante: Donante!
+  fecha_verificacion: String!
+  resultado: String!
+  observaciones: String!
+}
+
+type Contacto {
+  id: Int!
+  donante: Donante
+  nombre_contacto: String!
+  telefono: String!
+  relacion: String!
+}
+
+type Donante {
+  id: Int!
+  nombre: String!
+  correo: String!
+  telefono: String!
+  direccion: String!
+  tipo_documento: String!
+  numero_documento: String!
+  fecha_registro: String!
+  estado: String!
+}
+
+type Query {
+  findAllDonante: [Donante!]!
+  findOneDonante(id: Int!): Donante
+  findAllVerificacion: [Verificacion!]!
+  findOneVerificacion(id: Int!): Verificacion
+  findAllContacto: [Contacto!]!
+  findOneContacto(id: Int!): Contacto
+}
+
+type Mutation {
+  createDonante(createDonanteInput: CreateDonanteInput!): Donante!
+  updateDonante(id: Int!, updateDonanteInput: UpdateDonanteInput!): Donante!
+  removeDonante(id: Int!): Boolean!
+  createVerificacion(createVerificacionInput: CreateVerificacionInput!): Verificacion!
+  updateVerificacion(id: Int!, updateVerificacionInput: UpdateVerificacionInput!): Verificacion!
+  removeVerificacion(id: Int!): Boolean!
+  createContacto(createContactoInput: CreateContactoInput!): Contacto!
+  updateContacto(id: Int!, updateContactoInput: UpdateContactoInput!): Contacto!
+  removeContacto(id: Int!): Boolean!
+}
+
+input CreateDonanteInput {
+  nombre: String!
+  correo: String!
+  telefono: String!
+  direccion: String!
+  tipo_documento: String!
+  numero_documento: String!
+  fecha_registro: String!
+  estado: String!
+}
+
+input UpdateDonanteInput {
+  nombre: String
+  correo: String
+  telefono: String
+  direccion: String
+  tipo_documento: String
+  numero_documento: String
+  fecha_registro: String
+  estado: String
+}
+
+input CreateVerificacionInput {
+  donanteId: Int!
+  fecha_verificacion: String!
+  resultado: String!
+  observaciones: String!
+}
+
+input UpdateVerificacionInput {
+  donanteId: Int
+  fecha_verificacion: String
+  resultado: String
+  observaciones: String
+}
+
+input CreateContactoInput {
+  donanteId: Int!
+  nombre_contacto: String!
+  telefono: String!
+  relacion: String!
+}
+
+input UpdateContactoInput {
+  donanteId: Int
+  nombre_contacto: String
+  telefono: String
+  relacion: String
+}
