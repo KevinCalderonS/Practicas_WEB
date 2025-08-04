@@ -1,0 +1,62 @@
+{
+  "domain": "restaurant",
+  "description": "Sistema de gestión de restaurante Tacos El Güero",
+  "entities": [
+    {
+      "name": "Category",
+      "description": "Categorías de productos del menú",
+      "properties": ["id", "name", "description", "image"],
+      "relationships": {
+        "products": "hasMany"
+      }
+    },
+    {
+      "name": "Product",
+      "description": "Productos disponibles en el menú",
+      "properties": ["id", "name", "description", "price", "image", "categoryId"],
+      "relationships": {
+        "category": "belongsTo",
+        "orderItems": "hasMany"
+      }
+    },
+    {
+      "name": "Order",
+      "description": "Pedidos realizados por los clientes",
+      "properties": ["id", "customerName", "total", "status", "createdAt"],
+      "relationships": {
+        "orderItems": "hasMany"
+      }
+    },
+    {
+      "name": "OrderItem",
+      "description": "Items individuales dentro de un pedido",
+      "properties": ["id", "orderId", "productId", "quantity", "unitPrice", "subtotal"],
+      "relationships": {
+        "order": "belongsTo",
+        "product": "belongsTo"
+      }
+    }
+  ],
+  "services": [
+    {
+      "name": "CategoryService",
+      "description": "Gestión de categorías de productos",
+      "methods": ["findAll", "findOne", "create", "update", "delete"]
+    },
+    {
+      "name": "ProductService",
+      "description": "Gestión de productos del menú",
+      "methods": ["findAll", "findOne", "findByCategory", "create", "update", "delete"]
+    },
+    {
+      "name": "OrderService",
+      "description": "Gestión de pedidos y carrito de compras",
+      "methods": ["findAll", "findOne", "create", "update", "delete", "addItem", "removeItem"]
+    }
+  ],
+  "technologies": {
+    "phase1": "REST API",
+    "phase2": "GraphQL",
+    "phase3": "WebSocket"
+  }
+}
